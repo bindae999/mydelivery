@@ -127,6 +127,8 @@ public interface DeliveryService {
 
 
 ## CQRS
+View인 orderBoard는 실시간으로 주문상태를 확인할 수 있음.
+![image](https://user-images.githubusercontent.com/68535067/97413158-c7c5d100-1945-11eb-93ed-4a0cdf8d26c2.png)
 
 ## SelfHealing-Liveness Probe
 
