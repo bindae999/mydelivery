@@ -59,7 +59,7 @@ public interface DeliveryService {
     }
 ```
 -증빙화면
-- 배달요청(Shop)-배달접수(Delivery)는 동기식으로 연동되어있음, Shop서비스를 내려놓고 주문요청을 하게되면 장애발생
+- 배달요청(Shop)-배달접수(Delivery)는 동기식으로 연동되어있음, delivery서비스를 내려놓고 shop에서 요청을 하게되면 장애발생
 ![image](https://user-images.githubusercontent.com/68535067/97410951-04dc9400-1943-11eb-8a83-bd369d22dec8.png)
 
 ## 비동기식 호출 PUB/SUB(장애격리)
