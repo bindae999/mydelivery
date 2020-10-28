@@ -8,8 +8,59 @@
 - 주문접수(Order)->주문확인 후 주문취소(shop)->주문상태값  RequestCancel로 변경(Order)
 ![image](https://user-images.githubusercontent.com/68535067/97409032-533c6380-1940-11eb-9a6f-8d12c5d5a98a.png)
 
-## Request-Response
+## 동기식 호출 Request-Response
+- Shop의 DeliveryService.java
+```
+package mydelivery.external;
 
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.util.Date;
+
+@FeignClient(name="Delivery", url="${api.url.Delivery}")
+//@FeignClient(name="Delivery", url="http://Delivery:8080")
+public interface DeliveryService {
+
+    @RequestMapping(method= RequestMethod.POST, path="/deliveries")
+    public void delivery(@RequestBody Delivery delivery);
+
+}
+```
+-- shop의 Shop.java
+```
+@PostUpdate
+    public void onPostUpdate(){
+        RequestCanceled requestCanceled = new RequestCanceled();
+        BeanUtils.copyProperties(this, requestCanceled);
+
+        if(requestCanceled.getOrderStatus().equals("request Cancel")){
+            requestCanceled.setOrderStatus(this.getOrderStatus());
+            requestCanceled.publishAfterCommit();
+        }else{
+            DeliveryRequested deliveryRequested = new DeliveryRequested();
+            BeanUtils.copyProperties(this, deliveryRequested);
+            deliveryRequested.publishAfterCommit();
+
+            //Following code causes dependency to external APIs
+            // it is NOT A GOOD PRACTICE. instead, Event-Policy mapping is recommended.
+            mydelivery.external.Delivery delivery = new mydelivery.external.Delivery();
+            System.out.println("배달요청 접수!!"+this.getOrderId());
+            delivery.setOrderId(this.getOrderId());
+            delivery.setOrderStatus("Delivery Request");
+
+            // mappings goes here
+            ShopApplication.applicationContext.getBean(mydelivery.external.DeliveryService.class)
+                    .delivery(delivery);
+
+        }
+    }
+```
+-증빙화면
+- 배달요청(Shop)-배달접수(Delivery)는 동기식으로 연동되어있음, Shop서비스를 내려놓고 주문요청을 하게되면 장애발생
+![image](https://user-images.githubusercontent.com/68535067/97410951-04dc9400-1943-11eb-8a83-bd369d22dec8.png)
 
 ## 비동기식 호출 PUB/SUB(장애격리)
 - Order의 Order.java
