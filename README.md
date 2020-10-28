@@ -143,6 +143,7 @@ View인 orderBoard는 실시간으로 주문상태를 확인할 수 있음.
 ![image](https://user-images.githubusercontent.com/68535067/97445003-1e480500-1970-11eb-8825-eb922e480085.png)
 
 - 증빙화면
+![image](https://user-images.githubusercontent.com/68535067/97458004-9ff25f80-197d-11eb-9bdc-6c9890a6fa3a.png)
 
 ## 오토스케일러 (HPA)
 
