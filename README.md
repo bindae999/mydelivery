@@ -11,7 +11,7 @@
 ## Request-Response
 
 
-## PUB/SUB
+## 비동기식 호출 PUB/SUB(장애격리)
 - Order의 Order.java
 ```
     @PostPersist
@@ -64,7 +64,8 @@
  ```
 
 -증빙화면
-![image](https://user-images.githubusercontent.com/68535067/97400165-fd60bf00-1931-11eb-9bd8-926c69149a7e.png)
+- 주문요청(order)-주문접수(Shop)는 비동기식으로 연동되어있음, Shop서비스를 내려놓고 주문요청을 하여도 주문서비스는 가능함
+![image](https://user-images.githubusercontent.com/68535067/97409648-54ba5b80-1941-11eb-95ac-458e226783dd.png)
 
 
 ## Gateway
