@@ -140,6 +140,10 @@ View인 orderBoard는 실시간으로 주문상태를 확인할 수 있음.
 ## 오토스케일러 (HPA)
 
 ## CI/CD
+- CI
+![image](https://user-images.githubusercontent.com/68535067/97433120-58110f80-1960-11eb-8c54-389ce5ecb63a.png)
+- CD
+![image](https://user-images.githubusercontent.com/68535067/97433936-9bb84900-1961-11eb-9666-93b474411843.png)
 
 ## configMap
 
