@@ -122,10 +122,10 @@ public interface DeliveryService {
 
 ## Gateway
 -소스적용
-
+![image](https://user-images.githubusercontent.com/68535067/97443175-0d968f80-196e-11eb-8891-c668474d2bfb.png)
 
 -증빙화면
-
+![image](https://user-images.githubusercontent.com/68535067/97443014-d45e1f80-196d-11eb-8e04-3acf7a92c3bb.png)
 
 ## CQRS
 View인 orderBoard는 실시간으로 주문상태를 확인할 수 있음.
