@@ -5,8 +5,11 @@
 ![image](https://user-images.githubusercontent.com/68535067/97397347-65aca200-192c-11eb-810a-049c2f12ae7b.png)
 
 ## saga
+- 주문접수(Order)->주문확인 후 주문취소(shop)->주문상태값  RequestCancel로 변경(Order)
+![image](https://user-images.githubusercontent.com/68535067/97409032-533c6380-1940-11eb-9a6f-8d12c5d5a98a.png)
 
 ## Request-Response
+
 
 ## PUB/SUB
 - Order의 Order.java
@@ -65,6 +68,11 @@
 
 
 ## Gateway
+-소스적용
+
+
+-증빙화면
+
 
 ## CQRS
 
