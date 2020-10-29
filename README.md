@@ -140,6 +140,21 @@ View인 orderBoard는 실시간으로 주문상태를 확인할 수 있음.
 ![image](https://user-images.githubusercontent.com/68535067/97512001-bf17de00-19cb-11eb-9ab8-55785e97bc71.png)
 
 ## 무정지 배포-Readnees Probe
+- 소스 확인
+```
+          readinessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+```
+- 증빙화면 : 
+  1. Order의 deployment.yaml파일의 ReadneesProbe를 주석처리하여 오류 발생시킴
+  2. siege로 모니터링 걸어둠
+  3. 8080으로 배포하여  정상  서비스로  복원  
+![image](https://user-images.githubusercontent.com/68535067/97514497-2cc70880-19d2-11eb-8ed8-bf02d8b89f2f.png)
 
 ## CB
 -  소스설정
