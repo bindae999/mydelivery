@@ -186,4 +186,10 @@ kubectl autoscale deploy order --min=1 --max=10 --cpu-percent=15
 
 ## configMap
 
+
 ## 폴리글랏
+- Order의  pom.xml에 H2  대신 hsqldb 적용
+![image](https://user-images.githubusercontent.com/68535067/97516070-ad3b3880-19d5-11eb-818f-37b0706fdd39.png)
+
+-증빙화면 : DB변경후에도 오더가 정상 저장됨을 확인
+![image](https://user-images.githubusercontent.com/68535067/97517037-cb099d00-19d7-11eb-90a5-ff08cbf3301c.png)
