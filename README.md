@@ -6,8 +6,9 @@
 
 ## saga
 - 주문접수(Order)->주문확인 후 주문취소(shop)->주문상태값  RequestCancel로 변경(Order)
-![image](https://user-images.githubusercontent.com/68535067/97414001-cba62300-1946-11eb-8bd8-2ba7a9d2cde5.png)
-![image](https://user-images.githubusercontent.com/68535067/97409032-533c6380-1940-11eb-9a6f-8d12c5d5a98a.png)
+![image](https://user-images.githubusercontent.com/68535067/97525815-0bbee180-19eb-11eb-8520-7eb821d2a376.png)
+
+![image](https://user-images.githubusercontent.com/68535067/97525856-27c28300-19eb-11eb-82fe-175aea1a1cdb.png)
 
 ## 동기식 호출 Request-Response
 - Shop의 DeliveryService.java
