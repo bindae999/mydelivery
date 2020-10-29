@@ -153,7 +153,7 @@ View인 orderBoard는 실시간으로 주문상태를 확인할 수 있음.
 - 증빙화면 : 
   1. Order의 deployment.yaml파일의 ReadneesProbe를 주석처리하여 오류 발생시킴
   2. siege로 모니터링 걸어둠
-  3. 8080으로 배포하여  정상  서비스로  복원  
+  3. 8080으로 배포하여  정상  서비스로  복원  : 15%정도  실패하다가  정상으로전환하는것을 확인
 ![image](https://user-images.githubusercontent.com/68535067/97514497-2cc70880-19d2-11eb-8ed8-bf02d8b89f2f.png)
 
 ## CB
@@ -167,6 +167,16 @@ View인 orderBoard는 실시간으로 주문상태를 확인할 수 있음.
 ![image](https://user-images.githubusercontent.com/68535067/97458004-9ff25f80-197d-11eb-9bdc-6c9890a6fa3a.png)
 
 ## 오토스케일러 (HPA)
+-autoscle적용
+```
+kubectl autoscale deploy order --min=1 --max=10 --cpu-percent=15
+```
+- sige이용 과부하 적용
+![image](https://user-images.githubusercontent.com/68535067/97515645-d27b7700-19d4-11eb-9804-ecb4025cfe0b.png)
+
+-  모니터링
+![image](https://user-images.githubusercontent.com/68535067/97515733-0b1b5080-19d5-11eb-87ce-91888e880dae.png)
+
 
 ## CI/CD
 - CI
