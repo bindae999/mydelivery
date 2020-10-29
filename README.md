@@ -179,13 +179,65 @@ kubectl autoscale deploy order --min=1 --max=10 --cpu-percent=15
 
 
 ## CI/CD
+- configmap.yml파일
+```
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: apiurl
+data:
+  url:  http://delivery:80
+  fluentd-sever-ip: 10.xxx.xxx.xxx
+```
+
+-  depoyment.yml 파일
+```
+          env:
+            - name: configurl
+              valueFrom:
+                configMapKeyRef:
+                  name: apiurl
+                  key: url
+```
+
+- application.yml파일 
+```
+#PSS : REQ/RES 장애격리 처리
+api:
+  url:
+    #Delivery: http://delivery:8080
+    Delivery: ${configurl}
+
+feign:
+  hystrix:
+    enabled: true
+```
+
+- DeliveryService.java 파일
+```
+@FeignClient(name="Delivery", url="${api.url.Delivery}")
+//@FeignClient(name="Delivery", url="http://Delivery:8080")
+public interface DeliveryService {
+
+    @RequestMapping(method= RequestMethod.POST, path="/deliveries")
+    public void delivery(@RequestBody Delivery delivery);
+
+}
+```
+
 - CI
 ![image](https://user-images.githubusercontent.com/68535067/97433120-58110f80-1960-11eb-8c54-389ce5ecb63a.png)
 - CD
 ![image](https://user-images.githubusercontent.com/68535067/97433936-9bb84900-1961-11eb-9666-93b474411843.png)
 
 ## configMap
+- 
 
+- 80포트로 설정하여 오류발생확인
+![image](https://user-images.githubusercontent.com/68535067/97522634-8dab0c80-19e3-11eb-9320-9438c2b0876b.png)
+
+- configmap 적용확인
+![image](https://user-images.githubusercontent.com/68535067/97522567-66543f80-19e3-11eb-83b0-4433d9a7ca96.png)
 
 ## 폴리글랏
 - Order의  pom.xml에 H2  대신 hsqldb 적용
