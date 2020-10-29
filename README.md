@@ -132,6 +132,12 @@ View인 orderBoard는 실시간으로 주문상태를 확인할 수 있음.
 ![image](https://user-images.githubusercontent.com/68535067/97413158-c7c5d100-1945-11eb-93ed-4a0cdf8d26c2.png)
 
 ## SelfHealing-Liveness Probe
+- 소스화면
+![image](https://user-images.githubusercontent.com/68535067/97511878-77915200-19cb-11eb-9a1e-af62a283fe8a.png)
+- resatrt 시도 횟수
+![image](https://user-images.githubusercontent.com/68535067/97511814-516bb200-19cb-11eb-9849-44edc9d2a128.png)
+- describe 확인 : Liveness는 8081을  확인, 실제  서비스포트는 8080
+![image](https://user-images.githubusercontent.com/68535067/97512001-bf17de00-19cb-11eb-9ab8-55785e97bc71.png)
 
 ## 무정지 배포-Readnees Probe
 
